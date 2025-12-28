@@ -20,3 +20,16 @@ setInterval(() => {
 
   setTimeout(() => heart.remove(), 6000);
 }, 500);
+const music = document.getElementById("bgMusic");
+const overlay = document.getElementById("tapToStart");
+
+function startMusic() {
+  music.play().catch(() => {});
+  overlay.style.display = "none";
+
+  document.removeEventListener("click", startMusic);
+  document.removeEventListener("touchstart", startMusic);
+}
+
+document.addEventListener("click", startMusic);
+document.addEventListener("touchstart", startMusic);
